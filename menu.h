@@ -1,14 +1,9 @@
-#include<string.h>
-class menu
+#include <fstream>
+#include <iostream>
+#include <string>
+class Menu
 {
-    void printBreak();
-public:
-    std::ostream out;
-    std::istream in;
-    int getInt(string); // get description, gave value
-    std::ostream getOstream();
-    std::istream getIstream();
-    menu(std::ostream, std::istream); //constructor
-    ~menu(); // to do close file
-    
+    public:
+        menu::printBreak()
+	std::ostream& foo(std::ostream& stream, std::string msg);
 };
