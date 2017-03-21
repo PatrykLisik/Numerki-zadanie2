@@ -3,7 +3,14 @@
 #include <string>
 class Menu
 {
-    public:
-        menu::printBreak()
-	std::ostream& foo(std::ostream& stream, std::string msg);
+    std::ostream* output;
+    std::istream* input;
+    void printBreak();
+public:
+        std::ostream* getOstrem(string);
+        std::istream* getIstrem(string);
+        template <class T> T getT(string);
+       menu(std::ostream* ,std::istream*,double,double,int,bool);
+       
+       
 };
