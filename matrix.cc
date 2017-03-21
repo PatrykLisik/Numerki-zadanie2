@@ -13,7 +13,7 @@ Matrix::Matrix(const int r,const int c)
 std::ostream& Matrix::operator<< (std::ostream&a)
 {
     for(int i=0;i<collumns;i++)
-    a<<solutionPointer[i];
+    a<<"["solutionPointer[i]<<" ] ";
     return a;
 }
  std::istream& Matrix::operator>> (std::istream&in)
