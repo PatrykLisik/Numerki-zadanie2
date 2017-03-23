@@ -17,9 +17,9 @@ int Matrix::getCollumns(){return collumns;}
 std::ostream& operator << (std::ostream& a, Matrix& m)
 {
     //setprecision parameter should be added amd later output can be mor fancy 
-    for(int i=0;i<m.getRows();i++)
+    for(int i=0;i<m.rows;i++)
    {     a<<"|";
-         for(int j=0;j<m.getCollumns();j++)
+         for(int j=0;j<m.collumns;j++)
              a<<m.getCell(i,j)<<" ";//burwa czm to tego tego nie widzi
          a<<"|\n";
    }
@@ -27,9 +27,9 @@ std::ostream& operator << (std::ostream& a, Matrix& m)
 }
 std::istream& operator>> (std::istream& in, Matrix& m)
  {
-     for(int i=0;i<m.getRows();i++)
+     for(int i=0;i<m.rows;i++)
      {
-         for(int j=0;j<m.getCollumns();j++)
+         for(int j=0;j<m.collumns;j++)
          {
              double temp;
              in>>temp;
