@@ -1,9 +1,10 @@
 #include"matrix.h"
 #include"eqSolver.h"
+#define null 0
 
 void EqSolver::setStop(int it)//intertion
 {
-    ni=it
+    ni=it;
     ep=0;// delta=0 means that iteration mehod has been choosen
 }
 void EqSolver::setStop(double it)//intertion
@@ -20,11 +21,11 @@ void  EqSolver::getMatrix(Matrix* a=null)
 {
     if(!a)
     {
-        cout<<"matrix has been entered / macierz została wpisana \n";
+        std::cout<<"matrix has been entered / macierz została wprowadzona \n";
         m=a; 
         if(!solutionPointer)
             delete [] solutionPointer;
-        solutionPointer=new double[a->collumns];
+        solutionPointer=new double[a->getCollumns()];
     }
     
 }
@@ -45,8 +46,9 @@ EqSolver::EqSolver(int a,Matrix* b=null)
     setStop(a);
     getMatrix(b);
 }
-/*void Matrix::gaussSeidelMethod();
+/*void Matrix::gaussSeidelMethod()
  {
+     
      for(int i=0;i<c;i++)
          solutionPointer[i]=0;
      for(int l=0;isStop();l++)

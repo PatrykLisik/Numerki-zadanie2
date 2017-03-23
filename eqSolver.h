@@ -1,6 +1,6 @@
 
 
-class EqSolver //gaus-seidel
+class EqSolver //linear equatrion solver gaus-seidel
 {
     double del,ep;// delta epsilon
     int ni,ci;//number of interations, current iterarion
