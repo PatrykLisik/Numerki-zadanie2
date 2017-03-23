@@ -3,7 +3,18 @@
 
 Matrix::Matrix(const int r,const int c)
 {
-   resizeMatrix(r,c);
+  double** tempMatrixPointer=new double*[r];
+     for(int j=0;j<r;j++)
+         tempMatrixPointer[j]=new double[c];
+     
+     
+     for(int i=0;i<rows;i++)
+         for(int j=0;j<collumns;j++)
+             matrixPointer[i][j]=0;
+     
+     matrixPointer= tempMatrixPointer;
+     rows=r;
+     collumns=c;
 
 }
 
@@ -42,22 +53,34 @@ std::istream& operator>> (std::istream& in, Matrix& m)
  Matrix::~Matrix()
  {
       //dealocating memory burwa
-    std:: cout<<"DEstructor matrix delted \n";
+   
     for(int i=0;i<rows;i++)
         delete [] matrixPointer[i];
-    delete [] matrixPointer;
+    delete [] matrixPointer; 
+    std:: cout<<"DEstructor matrix delted \n";
  }
- void Matrix::resizeMatrix(const int& r,const int& c)
+void Matrix::resize(const int& r,const int& c)
  {
      double** tempMatrixPointer=new double*[r];
      for(int j=0;j<r;j++)
          tempMatrixPointer[j]=new double[c];
-     //~Matrix();
+     
+   
+     //std::cout<<"rewrite \n";
+      for(int i=0;i<r;i++)
+         for(int j=0;j<c;j++)
+             tempMatrixPointer[i][j]=matrixPointer[i][j];
+  
+         //std::cout<<"del old Matrix() \n";
+         for(int i=0;i<rows;i++)
+        delete [] matrixPointer[i];
+    delete [] matrixPointer;
+             
      matrixPointer= tempMatrixPointer;
      rows=r;
      collumns=c;
  }
- 
+ void Matrix::resize(){resize(rows+1;column+1);}
  /*
  inline bool isStop(double delta, double epsilon, int iteration, int iend, bool isIteration){
     if(isIteration)
