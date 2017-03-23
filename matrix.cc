@@ -34,7 +34,7 @@ std::ostream& operator << (std::ostream& a, Matrix& m)
              a<<m.getCell(i,j)<<" ";//burwa czm to tego tego nie widzi
          a<<"|\n";
    }
-    return a;
+
 }
 std::istream& operator>> (std::istream& in, Matrix& m)
  {
