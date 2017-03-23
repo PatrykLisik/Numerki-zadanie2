@@ -1,39 +1,73 @@
 #include "matrix.h" 
+#include <iostream>
 
 Matrix::Matrix(const int r,const int c)
 {
-    rows=r;
-    collumns=c;
-    solutionPointer= new double[c];
-    matrixPointer= new double*[r];
-    for(int i=0;i<r;i++)
-        matrixPointer[i]=new double[c];
+   resizeMatrix(r,c);
 
 }
-std::ostream& Matrix::operator<< (std::ostream&a)
+
+double Matrix::getCell(const int x, const int y) {return matrixPointer[x][y];}
+
+void Matrix::setCell(const int x, const int y, const double var){matrixPointer[x][y]=var;}
+
+int Matrix::getRows(){return rows;}
+int Matrix::getCollumns(){return collumns;}
+
+std::ostream& operator << (std::ostream& a, Matrix& m)
 {
-    for(int i=0;i<collumns;i++)
-    a<<solutionPointer[i];
+    //setprecision parameter should be added amd later output can be mor fancy 
+    for(int i=0;i<m.getRows();i++)
+   {     a<<"|";
+         for(int j=0;j<m.getCollumns();j++)
+             a<<m.getCell(i,j)<<" ";//burwa czm to tego tego nie widzi
+         a<<"|\n";
+   }
     return a;
 }
- std::istream& Matrix::operator>> (std::istream&in)
+std::istream& operator>> (std::istream& in, Matrix& m)
  {
-     for(int i=0;i<rows;i++)
-         for(int j=0;j<collumns;j++)
-             in>>matrixPointer[i][j];
-         
+     for(int i=0;i<m.getRows();i++)
+     {
+         for(int j=0;j<m.getCollumns();j++)
+         {
+             double temp;
+             in>>temp;
+             m.setCell(i,j,temp);
+         }
+             
+     } 
          return in;
  }
+ Matrix::~Matrix()
+ {
+      //dealocating memory burwa
+    std:: cout<<"DEstructor matrix delted \n";
+    for(int i=0;i<rows;i++)
+        delete [] matrixPointer[i];
+    delete [] matrixPointer;
+ }
+ void Matrix::resizeMatrix(const int& r,const int& c)
+ {
+     double** tempMatrixPointer=new double*[r];
+     for(int j=0;j<r;j++)
+         tempMatrixPointer[j]=new double[c];
+     //~Matrix();
+     matrixPointer= tempMatrixPointer;
+     rows=r;
+     collumns=c;
+ }
  
+ /*
  inline bool isStop(double delta, double epsilon, int iteration, int iend, bool isIteration){
     if(isIteration)
         return iteration<=iend;
     else
         //cout << delta << ' ' << epsilon << '\n';
         return delta>epsilon;
-}
+}*/
 
- void Matrix::gaussSeidelMethod();
+/* void Matrix::gaussSeidelMethod();
  {
      for(int i=0;i<c;i++)
          solutionPointer[i]=0;
@@ -57,4 +91,4 @@ std::ostream& Matrix::operator<< (std::ostream&a)
              matrixPointer[i][i]=temp;
          }
      }
- }
+ }*/

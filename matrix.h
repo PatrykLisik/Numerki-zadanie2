@@ -3,14 +3,17 @@
 
 class Matrix{
 double **matrixPointer;
-    double *solutionPointer;
     int rows, collumns;
-    stop s;
+    friend std::ostream& operator<<(std::ostream& out, Matrix& m);// get matrix
+    friend std::istream& operator>>(std::istream& out, Matrix& m);// print matrix
 public:
-    std::ostream& operator<< (std::ostream&);// print solution
-    std::istream& operator>> (std::istream&);// get matrix
+    double getCell(const int,const int);
+    void setCell(const int,const int,const double);
     Matrix(const int,const int);
-    //~matrix();//celan memory, delete pointers
-    bool isConvergence(); //check if exapmle is solveable
-    void gaussSeidelMethod(); // fill solution table with solution
+    ~Matrix();//celan memory, delete pointers
+    void resizeMatrix(const int&,const int&);
+    void resizeMatrix();
+    int getRows();
+    int getCollumns();
+    
 };
