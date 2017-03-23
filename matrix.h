@@ -11,8 +11,8 @@ public:
     void setCell(const int,const int,const double);
     Matrix(const int,const int);
     ~Matrix();//celan memory, delete pointers
-    void resizeMatrix(const int&,const int&);
-    void resizeMatrix();
+    void resize(const int&,const int&);
+    void resize();
     int getRows();
     int getCollumns();
     

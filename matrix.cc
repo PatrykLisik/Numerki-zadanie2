@@ -80,38 +80,6 @@ void Matrix::resize(const int& r,const int& c)
      rows=r;
      collumns=c;
  }
- void Matrix::resize(){resize(rows+1;column+1);}
- /*
- inline bool isStop(double delta, double epsilon, int iteration, int iend, bool isIteration){
-    if(isIteration)
-        return iteration<=iend;
-    else
-        //cout << delta << ' ' << epsilon << '\n';
-        return delta>epsilon;
-}*/
+ void Matrix::resize(){resize(rows+1,collumns+1);}
 
-/* void Matrix::gaussSeidelMethod();
- {
-     for(int i=0;i<c;i++)
-         solutionPointer[i]=0;
-     for(int l=0;isStop();l++)
-     {
-         for(int i=0;i<collumns;i++)
-         {
-             //no if optymaliaztion
-             temp=matrixPointer[i][i];
-             matrixPointer[i][i]=0;
-             matrixPointer[i][collumns-1]*=-1;
-             
-             for(intj=0;j<rows;j++)
-             {
-                 solutionPointer[i]-=matrixPointer[i][j];
-             }
-             solutionPointer[i]/=temp;
-             
-             //orginal values come back to to matrix
-             matrixPointer[i][collumns-1]*=-1;
-             matrixPointer[i][i]=temp;
-         }
-     }
- }*/
+ 
