@@ -25,7 +25,7 @@ void  EqSolver::getMatrix(Matrix* a=null)
         m=a; 
         if(!solutionPointer)
             delete [] solutionPointer;
-        solutionPointer=new double[a->getCollumns()];
+        solutionPointer=new double[(a->getCollumns)()];
     }
     
 }
