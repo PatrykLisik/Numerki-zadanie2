@@ -1,5 +1,8 @@
 #include "matrix.h" 
 #include <iostream>
+#include <iomanip>
+#include<math.h>
+#include<algorithm>
 
 Matrix::Matrix(const int r,const int c)
 {
@@ -38,11 +41,12 @@ int Matrix::getCollumns(){return collumns;}
 
 std::ostream& operator << (std::ostream& a, Matrix& m)
 {
-    //setprecision parameter should be added and output can be more fancy 
+    
+    a<<std::fixed<<std::setprecision(3);
     for(int i=0;i<m.getRows();i++)
    {     a<<"|";
          for(int j=0;j<m.getCollumns();j++)
-             a<<m.getCell(i,j)<<" ";
+             a<<std::setw(8)<<m.getCell(i,j)<<" ";
          a<<"|\n";
    }
 return a;
@@ -94,13 +98,13 @@ void Matrix::resize(const int& r,const int& c)
     matrixPointer[a]=matrixPointer[b];
     matrixPointer[b]=tmp;
  }
- void Matrix::sort()
+/* void Matrix::sort()
  {
      for(int k=0; k<rows; k++){
-        for(int i=0; i<rows; i++){
+        for(int i=k; i<rows; i++){
             int idx=0;
             for(int r=i+1; r<rows; r++){
-                if(matrixPointer[i][i]-matrixPointer[r][i]<matrixPointer[i][r]-matrixPointer[r][r]){
+                if(fabs(matrixPointer[i][i]-matrixPointer[r][i])<fabs(matrixPointer[i][r]-matrixPointer[r][r])){
                     idx=r;
                     break;
                 }
@@ -109,4 +113,17 @@ void Matrix::resize(const int& r,const int& c)
                 swapRows(idx, i);
         }
     }
- }
+ }*/
+void Matrix::sort()
+{
+   for(int j = 0; j < rows; j++)
+  {
+      
+    for(int i=j;i<rows;i++)
+    {
+        if( fabs(matrixPointer[j][j])<fabs(matrixPointer[i][j]))
+            swapRows(j,i);
+    }
+      
+  }
+}
